@@ -10,7 +10,6 @@ class Nav extends React.Component{
         this.state={
             current: null  
         }
-        console.log(this.props)
     }
     componentDidMount(){
         this.setState({
@@ -28,6 +27,10 @@ class Nav extends React.Component{
             });
         }
       };
+      logout=()=>{
+          localStorage.removeItem("token");
+            this.props.history.push("/");
+      }
 
     render(){
         return(
@@ -44,6 +47,9 @@ class Nav extends React.Component{
                     </Menu.Item>
                     <Menu.Item key="leaderboard">
                         <NavLink to="/leaderboard">Leaderboard</NavLink>
+                    </Menu.Item>
+                    <Menu.Item key="logout">
+                        <a href="" onClick={this.logout}> Logout </a>
                     </Menu.Item>
                 </Menu>
             </div>

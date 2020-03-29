@@ -18,7 +18,7 @@ class App extends React.Component {
     }
 }
   componentDidUpdate(){
-    if(this.props.loction.pathname !== "/"){
+    if(this.props.location.pathname !== "/"){
       this.setState({
         showNav: true
       })
