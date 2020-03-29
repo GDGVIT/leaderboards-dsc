@@ -1,0 +1,103 @@
+.navz img{
+  width: 125px;
+  height: auto;
+}
+body{
+  /* height: 100vh; */
+  font-family: Montserrat;
+  background-color: #EEEEEE;
+}
+
+.App{
+  background-color: #EEEEEE;
+}
+
+.ant-menu{
+  box-shadow: 0px 4px 8px #00000029;
+}
+.ant-menu-item-selected a{
+  color: black !important;
+}
+.ant-menu-item-active a{
+  color: black !important;
+}
+
+.form-holder{
+  text-align: center;
+  margin-top: 50px;
+}
+.formparent{
+  width: 80%;
+  margin: auto auto;
+  height: 80vh;
+  background: rgba(255, 255, 255, 1) 0% 0% no-repeat padding-box;
+  border: 0.5px solid rgba(112, 112, 112, 0.5);
+  border-radius: 10px;
+  text-align: center;
+}
+.formparent h3{
+  color: rgba(39, 133, 252, 1);
+  font-weight: 700;
+}
+.formparent p{
+  color: black;
+}
+.ant-form{
+  width: 100%;
+  margin: auto auto;
+  margin-top: 50px;
+}
+.formparent >div{
+  width: 80%;
+  margin: auto auto;
+  text-align: left;
+  margin-top: 50px;
+  height: inherit;
+
+}
+.ant-input{
+  background: rgba(255, 255, 255, 1) 0% 0% no-repeat padding-box;
+  border: 2px solid rgba(39, 133, 252, 1);
+  border-radius: 10px;
+  opacity: 1;
+}
+.ant-btn{
+  background: rgba(39, 133, 252, 1) 0% 0% no-repeat padding-box;
+  border-radius: 10px;
+  opacity: 1;
+  display: inline-block;
+  height: 10vh;
+  width: 12vw;
+}
+
+.textbtn{
+
+  text-align: center;
+  margin-top: 20vh;
+}
+.textbtn2{
+  text-align: center;
+  margin-top: 10vh;
+}
+@media(max-width: 768px){
+  .ant-btn{
+    width: 25vw;
+  }
+  .textbtn2{
+    margin-top: 0px;
+  }
+}
+@media(max-width: 1200px){
+  .textbtn2{
+    margin-top: 1vh;
+  }
+  .formparent{
+    height: auto;
+  }
+}
+.ant-tag{
+  background: rgba(255, 255, 255, 1) 0% 0% no-repeat padding-box;
+border: 2px solid rgba(112, 112, 112, 1);
+border-radius: 23px;
+opacity: 0.3;
+}
