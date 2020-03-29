@@ -27,7 +27,7 @@ const Login = (props) => {
         })
         .then(data => {
             console.log(data)
-            localStorage.setItem("token", data.User.token);
+            localStorage.setItem("token", 'Token '+data.User.token);
             props.history.push("/daily");
         })
         .catch(error => {
@@ -52,7 +52,7 @@ const Login = (props) => {
         })
         .then(data => {
             console.log(data);
-            localStorage.setItem("token", data.User.token);
+            localStorage.setItem("token", 'Token '+data.User.token);
             props.history.push("/daily");
         })
         .catch(error => {
