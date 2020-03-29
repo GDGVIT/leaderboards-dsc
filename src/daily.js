@@ -1,27 +1,78 @@
 import React from 'react'
 import { Form, Input, Button } from 'antd';
 
+var chal = 1;
+
 class Daily extends React.Component{
     constructor(props){
         super(props);
         this.state={
-
+            elems: []
         }
     }
     onFinish = values => {
-        console.log(values);
-      };
+        let send = {
+            'answer_body': values.answer_body,
+            'answer_type': 0,
+            'daily_challenge': chal
+        }
+        let tok = localStorage.getItem("token");
+        console.log(tok);
+        return fetch("https://project-ideas-v2-backend.herokuapp.com/admin_app/answer/", {
+        method: 'POST', // 'GET', 'PUT', 'DELETE', etc.
+        body: JSON.stringify(send), // Coordinate the body type with 'Content-Type'
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          'Authorization': tok
+        }),
+      })
+      .then(response => {
+        if(response.status === 200 || response.status===201 || response.status===202){
+        return response.json();
+        }else{
+            alert(response.status);
+        }
+        })
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => {
+            console.log(error)
+        });
+    };
+
+
+      componentDidMount(){
+        if(localStorage.getItem("token")){
+            console.log(".")
+        }else{
+            this.props.history.push("/");
+        }
+
+        fetch('https://project-ideas-v2-backend.herokuapp.com/admin_app/latest_question/', {
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                chal = data.Question.id;
+                this.setState({
+                    elems: data.Question.question_body
+                })
+            })
+            .catch(error => console.error(error))
+        }
+                
 
     render(){
         return(
             <div className="form-holder">  
-            <div className="formparent">   
+            <div className="formparent ques">   
             <div> 
             <h3>Question</h3>
-            <p>How is the quarantine helping you build your skills? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+            <p>{this.state.elems}</p>
             <Form name="Daily-form" onFinish={this.onFinish}>
             <h3>Your answer</h3>
-                <Form.Item name={['user', 'introduction']}>
+                <Form.Item name="answer_body">
                     <Input.TextArea placeholder="Give a short answer. Write about what you want to implement"/>
                 </Form.Item>
 

@@ -31,8 +31,8 @@ body{
   margin: auto auto;
   height: 80vh;
   background: rgba(255, 255, 255, 1) 0% 0% no-repeat padding-box;
-  border: 0.5px solid rgba(112, 112, 112, 0.5);
   border-radius: 10px;
+  box-shadow: 0px 0px 4px rgba(112, 112, 112);
   text-align: center;
 }
 .formparent h3{
@@ -55,7 +55,7 @@ body{
   height: inherit;
 
 }
-.ant-input{
+.ant-input, .ant-input-password{
   background: rgba(255, 255, 255, 1) 0% 0% no-repeat padding-box;
   border: 2px solid rgba(39, 133, 252, 1);
   border-radius: 10px;
@@ -66,7 +66,7 @@ body{
   border-radius: 10px;
   opacity: 1;
   display: inline-block;
-  height: 10vh;
+  height: 6vh;
   width: 12vw;
 }
 
@@ -100,4 +100,51 @@ body{
 border: 2px solid rgba(112, 112, 112, 1);
 border-radius: 23px;
 opacity: 0.3;
+}
+
+/* leaderboard */
+.ant-table-cell{
+  text-align: center;
+}
+.ant-table thead > tr > th{
+  text-align: center;
+}
+.ant-table-thead{
+  border: none !important;
+}
+tr{
+  border: none !important;
+}
+tr td{
+  border: none !important;
+}
+.share{
+  float: right;
+  width: 15%;
+}
+.formparent div h3{
+  width: 85%;
+  float: left;
+}
+.ques div h3{
+  width: 100%;
+  float: none;
+}
+
+.loginz div h3{
+  width: 100%;
+  float: none;
+}
+.loginz{
+  height: auto;
+}
+.logincenter{
+  text-align: center;
+}
+.formparent>div{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.ant-form-item-label{
+  width: 100px;
 }

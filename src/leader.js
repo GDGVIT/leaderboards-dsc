@@ -11,59 +11,48 @@ const columns = [
   },
   {
     title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
+    dataIndex: 'username',
+    key: 'username',
     render: text => <strong>{text}</strong>,
   },
   {
     title: 'Score',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Profile',
-    key: 'action',
-    render: (text, record) => (
-      <span>
-        <a>@SOmedude</a>
-      </span>
-    ),
+    dataIndex: 'marks',
+    key: 'marks',
   },
 ];
 
-const data = [
-  {
-    key: '1',
-    position: '1',
-    name: 'John Brown',
-    age: 130,
-  },
-  {
-    key: '2',
-    position: '2',
-    name: 'Jim Green',
-    age: 124,
-  },
-  {
-    key: '3',
-    position: '3',
-    name: 'Joe Black',
-    age: 69,
-  },
-];
 
 class Leader extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={
+      leaders: []
+    }
+  }
+  componentDidMount(){
+    fetch('https://project-ideas-v2-backend.herokuapp.com/admin_app/leaderboard_view/', {
+      })
+      .then(response => response.json())
+      .then(data2 => {
+        console.log(data2.message)
+        this.setState({
+          leaders: data2.message
+        })
+      })
+      .catch(error => console.error(error));
+    }
     render(){
         return(
         <div className="form-holder">  
-        <div className="formparent">   
-        <div> 
-        <h3>Leaderboard for today</h3>
-        <Table columns={columns} dataSource={data} />
+          <div className="formparent">   
+            <div> 
+              <h3>Leaderboard for today</h3>
+              <a href="#" className="share">Share link</a>
+              <Table columns={columns} dataSource={this.state.leaders} />
+            </div>
+          </div>
         </div>
-        </div>
-       
-      </div>
         );
     }
 }
