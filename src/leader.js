@@ -56,7 +56,7 @@ class Leader extends React.Component{
           <div className="formparent">   
             <div> 
               <h3>Leaderboard for today</h3>
-              <a href="#" className="share">Share link</a>
+              <a href="#" className="share ant-btn" >Share link</a>
               <Table columns={columns} dataSource={this.state.leaders} />
             </div>
           </div>

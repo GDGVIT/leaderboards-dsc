@@ -16,7 +16,7 @@ class Weekly extends React.Component{
         console.log(e);
       }
     onFinish = values => {
-        console.log(values.answer_body)
+        // console.log(values.answer_body)
         document.getElementById("Daily-form_answer_body").innerHTML = "";
         if(values.answer_body && values.answer_body !== ""){
             links[n] = values.answer_body;
@@ -24,16 +24,13 @@ class Weekly extends React.Component{
             this.setState({
                 thelinks: links
             });
-            console.log(this.state)
+            // console.log(this.state)
         }
     }
-    addTag(){
-        this.state.thelinks.map(function(i){
-            console.log(i)
-        return(<Tag closable>i</Tag>)
-
+    addTag=()=>{
+        this.state.thelinks.forEach((e, i) => {
+            console.log(e, i)
         })
-        
     }
     send = () =>{
         let send = {
@@ -58,7 +55,7 @@ class Weekly extends React.Component{
         }
         })
         .then(data => {
-            console.log(data)
+           this.props.alert.show(data.message)
         })
         .catch(error => {
             console.log(error)
@@ -73,6 +70,16 @@ class Weekly extends React.Component{
       }
 
     render(){
+        const { thelinks } = this.state;
+        const taglist = thelinks.length ? (
+            thelinks.map(
+                thelink =>{
+                    return(<Tag key={thelink} closable>{thelink}</Tag>)
+                }
+            )
+        ):(
+            <div>enter a link</div>
+        )
         return(
             
             <div className="form-holder">  
@@ -81,18 +88,18 @@ class Weekly extends React.Component{
             <div className="formparent ques">   
             <div> 
             <h3>Question</h3>
-            <p>How is the quarantine helping you build your skills? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, How is the quarantine helping you build your skills? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam How is the quarantine helping you build your skills? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam How is the quarantine helping you build your skills? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+            <p>How is the quarantine helping you build your skills? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut quarantine helping you build your skills? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam How is the quarantine helping you build your skills? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
             <Form name="Daily-form" onFinish={this.onFinish}>
             <h3>Your answer</h3>
-                <Form.Item name='answer_body'>
+                <Form.Item name='answer_body' className="sikebich" >
                     <Input placeholder="Project link(s)"/>
                 </Form.Item>
                 <div>
-                    {this.addTag()}
+                    {taglist}
                 </div>
 
             <Form.Item className="textbtn2">
-                <Button type="primary" htmlType="submit">
+                <Button type="primary" htmlType="submit" style={{'marginRight':'15px'}}>
                     Add link
                 </Button>
                 <Button type="primary" onClick={this.send}>

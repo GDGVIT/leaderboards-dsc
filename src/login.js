@@ -79,7 +79,11 @@ const { TabPane } = Tabs;
                     </Menu.Item>
     </Menu>
     <Tabs defaultActiveKey="1">
-        <TabPane tab="Login" key="1">
+        <TabPane tab="Leaderboard" key="1">
+        <Leader />
+            
+        </TabPane>
+        <TabPane tab="Login" key="2">
         <div className="formparent loginz">   
             <div> 
                 <h3>Login</h3>
@@ -116,7 +120,7 @@ const { TabPane } = Tabs;
             </div>
         </div>
         </TabPane>
-        <TabPane tab="Signup" key="2">
+        <TabPane tab="Signup" key="3">
         <div className="formparent loginz">   
             <div> 
                 <h3>Or, Signup</h3>
@@ -162,9 +166,6 @@ const { TabPane } = Tabs;
             </div>
         </TabPane>
     </Tabs>
-        
-        <Leader />
-
  
         </div>
   );
