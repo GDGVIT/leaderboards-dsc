@@ -1,16 +1,22 @@
 import React, {useEffect} from 'react';
-import { Form, Input, Button} from 'antd';
+import { Form, Input, Button, Menu, Tabs} from 'antd';
 import {withRouter} from 'react-router-dom';
+import Leader from './leader';
+import dsc from './assets/dsclogo.png';
+import { useAlert } from 'react-alert';
 
 
 const Login = (props) => {
     useEffect(() => {
         if(localStorage.getItem("token")){
-            props.history.push("/daily");
+            props.history.push("/leaderboard");
         }   
       });
+      const alert = useAlert()
+const { TabPane } = Tabs;
 
   const onFinish = values => {
+
     return fetch("https://project-ideas-v2-backend.herokuapp.com/app/normal_login/", {
         method: 'POST', // 'GET', 'PUT', 'DELETE', etc.
         body: JSON.stringify(values), // Coordinate the body type with 'Content-Type'
@@ -22,7 +28,8 @@ const Login = (props) => {
         if(response.status === 200 || response.status===201 || response.status===202){
         return response.json();
         }else{
-            alert(response.status);
+            console.log(response)
+            alert.show(response.statusText);
         }
         })
         .then(data => {
@@ -47,7 +54,7 @@ const Login = (props) => {
         if(response.status === 200 || response.status===201 || response.status===202){
         return response.json();
         }else{
-            alert(response.status);
+            alert.show(response.statusText);
         }
         })
         .then(data => {
@@ -65,7 +72,14 @@ const Login = (props) => {
   };
 
   return (
-    <div className="form-holder">  
+    <div className="form-holder logins" >  
+    <Menu mode="horizontal">
+                    <Menu.Item key="home" className="navz">
+                        <img src={dsc} alt="dsc-vit home"></img>
+                    </Menu.Item>
+    </Menu>
+    <Tabs defaultActiveKey="1">
+        <TabPane tab="Login" key="1">
         <div className="formparent loginz">   
             <div> 
                 <h3>Login</h3>
@@ -101,6 +115,8 @@ const Login = (props) => {
 
             </div>
         </div>
+        </TabPane>
+        <TabPane tab="Signup" key="2">
         <div className="formparent loginz">   
             <div> 
                 <h3>Or, Signup</h3>
@@ -143,8 +159,14 @@ const Login = (props) => {
                 </Form>
 
             </div>
+            </div>
+        </TabPane>
+    </Tabs>
+        
+        <Leader />
+
+ 
         </div>
-    </div>
   );
 };
 

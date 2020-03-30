@@ -1,26 +1,47 @@
 import React from 'react';
 import { Form, Input, Button, Tag } from 'antd';
+import Nav from './nav';
+import {withAlert} from 'react-alert';
 
-
+var links = [];
+var n = 0;
 class Weekly extends React.Component{
     constructor(props){
         super(props);
         this.state={
-
+            thelinks: []
         }
     }
     log = (e) => {
         console.log(e);
       }
     onFinish = values => {
-        console.log(values);
+        console.log(values.answer_body)
+        document.getElementById("Daily-form_answer_body").innerHTML = "";
+        if(values.answer_body && values.answer_body !== ""){
+            links[n] = values.answer_body;
+            n += 1;
+            this.setState({
+                thelinks: links
+            });
+            console.log(this.state)
+        }
+    }
+    addTag(){
+        this.state.thelinks.map(function(i){
+            console.log(i)
+        return(<Tag closable>i</Tag>)
+
+        })
+        
+    }
+    send = () =>{
         let send = {
-            'answer_body': values.answer_body,
+            'answer_body': this.state.thelinks,
             'answer_type': 1,
             'weekly_challenge': 1
         }
         let tok = localStorage.getItem("token");
-        console.log(values);
         return fetch("https://project-ideas-v2-backend.herokuapp.com/admin_app/answer/", {
         method: 'POST', // 'GET', 'PUT', 'DELETE', etc.
         body: JSON.stringify(send), // Coordinate the body type with 'Content-Type'
@@ -33,7 +54,7 @@ class Weekly extends React.Component{
         if(response.status === 200 || response.status===201 || response.status===202){
         return response.json();
         }else{
-            alert(response.status);
+            this.props.alert.show(response.statusText);
         }
         })
         .then(data => {
@@ -42,7 +63,7 @@ class Weekly extends React.Component{
         .catch(error => {
             console.log(error)
         });
-      };
+      }
       componentDidMount(){
           if(localStorage.getItem("token")){
               console.log(".")
@@ -53,7 +74,10 @@ class Weekly extends React.Component{
 
     render(){
         return(
+            
             <div className="form-holder">  
+          <Nav />
+
             <div className="formparent ques">   
             <div> 
             <h3>Question</h3>
@@ -61,16 +85,17 @@ class Weekly extends React.Component{
             <Form name="Daily-form" onFinish={this.onFinish}>
             <h3>Your answer</h3>
                 <Form.Item name='answer_body'>
-                    <Input.TextArea placeholder="Give a short answer. Write about what you want to implement"/>
+                    <Input placeholder="Project link(s)"/>
                 </Form.Item>
                 <div>
-                    <Tag closable onClose={this.log}>
-                    github.com/AshDarkfold
-                    </Tag>
+                    {this.addTag()}
                 </div>
 
             <Form.Item className="textbtn2">
                 <Button type="primary" htmlType="submit">
+                    Add link
+                </Button>
+                <Button type="primary" onClick={this.send}>
                     Submit
                 </Button>
             </Form.Item>
@@ -83,4 +108,4 @@ class Weekly extends React.Component{
     }
 }
 
-export default Weekly;
+export default withAlert()(Weekly);

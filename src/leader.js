@@ -1,6 +1,7 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom';
 import { Table, Tag } from 'antd';
+import Nav from './nav';
 
 const columns = [
   {
@@ -42,9 +43,16 @@ class Leader extends React.Component{
       })
       .catch(error => console.error(error));
     }
+
+    showNav = () => {
+      if(this.props.location.pathname !== '/'){
+        return(<Nav />);
+      }
+    }
     render(){
         return(
         <div className="form-holder">  
+        {this.showNav()}
           <div className="formparent">   
             <div> 
               <h3>Leaderboard for today</h3>

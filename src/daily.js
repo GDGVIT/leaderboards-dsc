@@ -1,5 +1,8 @@
 import React from 'react'
 import { Form, Input, Button } from 'antd';
+import Nav from './nav';
+import {withAlert} from 'react-alert';
+
 
 var chal = 1;
 
@@ -30,7 +33,7 @@ class Daily extends React.Component{
         if(response.status === 200 || response.status===201 || response.status===202){
         return response.json();
         }else{
-            alert(response.status);
+            this.props.alert.show(response.statusText);
         }
         })
         .then(data => {
@@ -66,6 +69,8 @@ class Daily extends React.Component{
     render(){
         return(
             <div className="form-holder">  
+        <Nav />
+
             <div className="formparent ques">   
             <div> 
             <h3>Question</h3>
@@ -90,4 +95,4 @@ class Daily extends React.Component{
     }
 }
 
-export default Daily;
+export default withAlert()(Daily);
