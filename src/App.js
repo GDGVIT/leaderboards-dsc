@@ -7,8 +7,18 @@ import Login from './login';
 import Weekly from './weekly';
 import Leader from './leader';
 import Nav from './nav';
+import { transitions, positions, Provider as AlertProvider } from 'react-alert';
+import AlertTemplate from 'react-alert-template-basic';
 
 
+const options = {
+  // you can also just use 'bottom center'
+  position: positions.BOTTOM_CENTER,
+  timeout: 5000,
+  offset: '30px',
+  // you can also just use 'scale'
+  transition: transitions.SCALE
+}
 
 class App extends React.Component {
   constructor(props){
@@ -27,13 +37,14 @@ class App extends React.Component {
   render(){
     return (
       <BrowserRouter>
+      <AlertProvider template={AlertTemplate} {...options}>
       <div className="App">
-          <Nav />
           <Route exact path='/' component={Login}/>
           <Route exact path='/daily' component={Daily}/>
           <Route exact path='/weekly' component={Weekly}/>
           <Route exact path='/leaderboard' component={Leader}/>
       </div>
+      </AlertProvider>
       </BrowserRouter>
     );
   }
