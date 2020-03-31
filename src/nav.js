@@ -8,7 +8,7 @@ class Nav extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            current: null  
+            current: props.active  
         }
     }
     componentDidMount(){
@@ -35,7 +35,7 @@ class Nav extends React.Component{
     render(){
         return(
             <div>
-                <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal">
+                <Menu onClick={this.handleClick} selectedKeys={this.state.current} mode="horizontal">
                     <Menu.Item key="home" className="navz">
                         <img src={dsc} alt="dsc-vit home"></img>
                     </Menu.Item>

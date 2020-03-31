@@ -9,7 +9,9 @@ import { useAlert } from 'react-alert';
 const Login = (props) => {
     useEffect(() => {
         if(localStorage.getItem("token")){
-            props.history.push("/leaderboard");
+            props.history.push({pathname: "/leaderboard",
+                                active: "leaderboard"
+                                });
         }   
       });
       const alert = useAlert()
@@ -53,14 +55,19 @@ const { TabPane } = Tabs;
       .then(response => {
         if(response.status === 200 || response.status===201 || response.status===202){
         return response.json();
+        }else if(response.status === 400){
+            alert.show("An account with this email/username already exists.");
+            console.log(response)
         }else{
             alert.show(response.statusText);
         }
         })
         .then(data => {
             console.log(data);
-            localStorage.setItem("token", 'Token '+data.User.token);
-            props.history.push("/daily");
+            if(data){
+                localStorage.setItem("token", 'Token '+data.User.token);
+                props.history.push("/daily");
+            }
         })
         .catch(error => {
             console.log(error);
@@ -123,7 +130,7 @@ const { TabPane } = Tabs;
         <TabPane tab="Signup" key="3">
         <div className="formparent loginz">   
             <div> 
-                <h3>Or, Signup</h3>
+                <h3>Signup</h3>
                 <Form
                 name="basic2"
                 initialValues={{ remember: true }}
