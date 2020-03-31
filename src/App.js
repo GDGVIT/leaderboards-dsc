@@ -10,6 +10,8 @@ import Nav from './nav';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 import Admin from './admin.js';
+import Adminlogin from './adminlogin.js';
+
 
 
 const options = {
@@ -45,6 +47,7 @@ class App extends React.Component {
           <Route exact path='/weekly' component={Weekly}/>
           <Route exact path='/leaderboard' component={Leader}/>
           <Route exact path='/adminpanel' component={Admin}/>
+          <Route exact path='/adminlogin' component={Adminlogin}/>
       </div>
       </AlertProvider>
       </BrowserRouter>

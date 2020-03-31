@@ -32,6 +32,9 @@ class Daily extends React.Component{
       .then(response => {
         if(response.status === 200 || response.status===201 || response.status===202){
         return response.json();
+        }else if(response.status === 400){
+            this.props.alert.show("You've already answered once!");
+            console.log(response)
         }else{
             this.props.alert.show(response.statusText);
         }
@@ -69,7 +72,7 @@ class Daily extends React.Component{
     render(){
         return(
             <div className="form-holder">  
-        <Nav />
+        <Nav active="daily"/>
 
             <div className="formparent ques">   
             <div> 

@@ -54,7 +54,7 @@ body{
   height: inherit;
 
 }
-.ant-input, .ant-input-password{
+.ant-input, .ant-input-password, .ant-input-number-input{
   background: rgba(255, 255, 255, 1) 0% 0% no-repeat padding-box;
   border: 2px solid rgba(39, 133, 252, 1);
   border-radius: 10px;
@@ -204,4 +204,25 @@ margin: auto auto;
   }
   .sikebich{
     margin-bottom: 0;
+  }
+
+  .admin{
+    width: 80%;
+    margin: auto auto;
+    margin-bottom: 20px;
+  }
+
+  .adminlogin{
+    width: 60%;
+    margin: auto auto;
+    margin-top: 50px;
+  }
+
+  .admin>*{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .ant-input-number{
+    width: 200px;
+    border-radius: 10px;
   }

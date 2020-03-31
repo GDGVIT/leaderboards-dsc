@@ -46,7 +46,7 @@ class Leader extends React.Component{
 
     showNav = () => {
       if(this.props.location.pathname !== '/'){
-        return(<Nav />);
+        return(<Nav active="leaderboard"/>);
       }
     }
     render(){

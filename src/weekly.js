@@ -83,7 +83,7 @@ class Weekly extends React.Component{
         return(
             
             <div className="form-holder">  
-          <Nav />
+          <Nav active="weekly"/>
 
             <div className="formparent ques">   
             <div> 
