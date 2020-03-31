@@ -4,7 +4,12 @@ import {withRouter} from 'react-router-dom';
 import Leader from './leader';
 import dsc from './assets/dsclogo.png';
 import { useAlert } from 'react-alert';
+import glogo from './assets/glogo.png';
+import * as firebase from "firebase";
 
+var provider = new firebase.auth.GoogleAuthProvider();
+provider.addScope('profile');
+provider.addScope('email');
 
 const Login = (props) => {
     useEffect(() => {
@@ -78,6 +83,52 @@ const { TabPane } = Tabs;
     console.log('Failed:', errorInfo);
   };
 
+
+  const gauth=(e)=>{
+    if(e){
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+            // This gives you a Google Access Token.
+            var token = result.credential.accessToken;
+            console.log(token)
+            // The signed-in user info.
+            var user = result.user;
+            // console.log(user.uid)
+            let values = {
+                "username":user.uid,
+                "platform":0,
+                "email":user.email
+            }
+            fetch("https://project-ideas-v2-backend.herokuapp.com/app/login_signup/", {
+                method: 'POST', // 'GET', 'PUT', 'DELETE', etc.
+                body: JSON.stringify(values), // Coordinate the body type with 'Content-Type'
+                headers: new Headers({
+                'Content-Type': 'application/json'
+                }),
+            }).then(response => {
+                if(response.status === 200 || response.status===201 || response.status===202){
+                    return response.json();
+                }else{
+                    console.log(response)
+                    alert.show(response.statusText);
+                }
+                })
+                .then(data => {
+                    console.log(data)
+                    localStorage.setItem("token", 'Token '+data.User.token);
+                    props.history.push({
+                        pathname: "/daily",
+                        state: data.User.token
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+           });
+    }
+  }
+
+
+
   return (
     <div className="form-holder logins" >  
     <Menu mode="horizontal">
@@ -120,6 +171,9 @@ const { TabPane } = Tabs;
                 <Form.Item className="logincenter">
                     <Button type="primary" htmlType="submit">
                     Submit
+                    </Button>
+                    <Button type="primary" className="oauth" onClick={()=>gauth(true)}>
+                        Login with <img src={glogo} alt="google"></img> 
                     </Button>
                 </Form.Item>
                 </Form>
@@ -165,6 +219,9 @@ const { TabPane } = Tabs;
                 <Form.Item className="logincenter">
                     <Button type="primary" htmlType="submit">
                     Submit
+                    </Button>
+                    <Button type="primary" className="oauth" onClick={()=>gauth(true)}>
+                        Signup with <img src={glogo} alt="google"></img> 
                     </Button>
                 </Form.Item>
                 </Form>
