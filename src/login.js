@@ -7,7 +7,7 @@ import { useAlert } from 'react-alert';
 import glogo from './assets/glogo.png';
 import tlogo from './assets/twitter.png';
 import gilogo from './assets/github.png';
-import flogo from './assets/face.png';
+import flogo from './assets/facebook.png';
 import * as firebase from "firebase";
 import { ReCaptcha } from 'react-recaptcha-v3';
 
@@ -221,11 +221,11 @@ const giauth=(e)=>{
                         Login with <img src={gilogo} alt="github"></img> 
                 </Button>
                 </Form.Item>
-                {/* <Form.Item className="logincenter">
+                <Form.Item className="logincenter">
                     <Button type="primary" className="oauth" onClick={()=>gauth(true)}>
                     Login with <img src={glogo} alt="google"></img> 
                     </Button>
-                </Form.Item> */}
+                </Form.Item>
                 </Form>
 
             </div>
