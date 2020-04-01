@@ -183,7 +183,7 @@ const giauth=(e)=>{
 
     <Menu mode="horizontal">
                     <Menu.Item key="home" className="navz">
-                        <img src={dsc} alt="dsc-vit home"></img>
+                       <a href="https://www.dscvit.com" target="_blank"><img src={dsc} alt="dsc-vit home"></img></a> 
                     </Menu.Item>
     </Menu>
     <Tabs defaultActiveKey="1">

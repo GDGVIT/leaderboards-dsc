@@ -33,7 +33,7 @@ class Nav extends React.Component{
             this.props.history.push("/");
       }
         showalert=()=>{
-            this.props.showalert("Coming soon")
+            alert("Coming soon")
         }
     render(){
         return(
@@ -42,14 +42,14 @@ class Nav extends React.Component{
                     <Menu.Item key="home" className="navz">
                         <img src={dsc} alt="dsc-vit home"></img>
                     </Menu.Item>
+                    <Menu.Item key="leaderboard">
+                        <NavLink to="/leaderboard">Leaderboard</NavLink>
+                    </Menu.Item>
                     <Menu.Item key="daily" disabled onClick={this.showalert}>
                         <NavLink to="/daily">Daily Challenge</NavLink>
                     </Menu.Item>
                     <Menu.Item key="weekly" disabled onClick={this.showalert}>
                         <NavLink to="/weekly">Weekly Challenge</NavLink>
-                    </Menu.Item>
-                    <Menu.Item key="leaderboard">
-                        <NavLink to="/leaderboard">Leaderboard</NavLink>
                     </Menu.Item>
                     <Menu.Item key="faq">
                         <NavLink to="/faq">FAQ</NavLink>

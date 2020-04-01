@@ -91,4 +91,4 @@ class Leader extends React.Component{
     }
 }
 
-export default Leader;
+export default withRouter(Leader);
