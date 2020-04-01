@@ -134,11 +134,10 @@ tr td{
   width: 100%;
   float: none;
 }
-.loginz{
-  height: auto;
-}
 .logincenter{
   text-align: center;
+  width: 50%;
+  float: left;
 }
 .formparent>div{
   padding-top: 30px;
@@ -152,6 +151,7 @@ tr td{
   max-width: 600px;
   margin: auto auto;
   text-align: center;
+  height: 300px;
 }
 
 .logins .formparent{
@@ -179,6 +179,7 @@ tr td{
     margin: auto auto;
     text-align: center;
     float: none;
+    height: auto;
   }
   .logins .formparent{
 margin: auto auto;
@@ -247,8 +248,17 @@ margin: auto auto;
 .max-width-setter{
   display: block;
     min-width: 546px;
-    overflow: scroll;
+    overflow: auto;
+    margin-top: 50px;
 }
 .form-holder{
   overflow: auto;
+}
+@media(max-width: 415px){
+  .logincenter{
+    width: 100%
+  }
+  .logins .loginz{
+    height: 400px;
+  }
 }

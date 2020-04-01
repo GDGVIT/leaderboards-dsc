@@ -48,6 +48,9 @@ class Nav extends React.Component{
                     <Menu.Item key="leaderboard">
                         <NavLink to="/leaderboard">Leaderboard</NavLink>
                     </Menu.Item>
+                    <Menu.Item key="faq">
+                        <NavLink to="/faq">FAQ</NavLink>
+                    </Menu.Item>
                     <Menu.Item key="logout">
                         <a href="" onClick={this.logout}> Logout </a>
                     </Menu.Item>
