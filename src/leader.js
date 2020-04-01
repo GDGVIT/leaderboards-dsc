@@ -68,7 +68,7 @@ class Leader extends React.Component{
         return(
         <div className="form-holder">  
         {this.showNav()}
-          <div className="formparent">   
+          <div className="formparent max-width-setter">   
             <div> 
               <h3>Today's Leaderboard</h3>
               <a href="#" className="share ant-btn" >Share link</a>

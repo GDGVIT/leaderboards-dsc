@@ -244,4 +244,11 @@ margin: auto auto;
     margin-left: 10px;
     min-width: 135px;
   }
-
+.max-width-setter{
+  display: block;
+    min-width: 546px;
+    overflow: scroll;
+}
+.form-holder{
+  overflow: auto;
+}
