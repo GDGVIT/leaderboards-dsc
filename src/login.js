@@ -221,14 +221,11 @@ const giauth=(e)=>{
                         Login with <img src={gilogo} alt="github"></img> 
                 </Button>
                 </Form.Item>
-
-
-                <Form.Item className="logincenter">
-
+                {/* <Form.Item className="logincenter">
                     <Button type="primary" className="oauth" onClick={()=>gauth(true)}>
-                        Login with <img src={glogo} alt="google"></img> 
+                    Login with <img src={glogo} alt="google"></img> 
                     </Button>
-                </Form.Item>
+                </Form.Item> */}
                 </Form>
 
             </div>
