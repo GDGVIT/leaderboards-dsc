@@ -11,6 +11,7 @@ import { transitions, positions, Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 import Admin from './admin.js';
 import Adminlogin from './adminlogin.js';
+import Faq from './faq.js'
 import * as firebase from "firebase";
 import firebaseConfig from './firebase.config';
 import { loadReCaptcha } from 'react-recaptcha-v3';
@@ -52,6 +53,7 @@ class App extends React.Component {
           <Route exact path='/daily' component={Daily}/>
           <Route exact path='/weekly' component={Weekly}/>
           <Route exact path='/leaderboard' component={Leader}/>
+          <Route exact path='/faq' component={Faq}/>
           <Route exact path='/adminpanel' component={Admin}/>
           <Route exact path='/adminlogin' component={Adminlogin}/>
       </div>

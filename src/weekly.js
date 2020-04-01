@@ -51,7 +51,22 @@ class Weekly extends React.Component{
         if(response.status === 200 || response.status===201 || response.status===202){
         return response.json();
         }else{
-            this.props.alert.show(response.statusText);
+            switch(response.status){
+                case 400: 
+                    alert.show("You have already answered once")
+                    break;
+                case 401: 
+                  alert.show("something's wrong. Please try again later")
+                  break;
+                case 403:
+                  alert.show("unauthorized")
+                  break;
+                case 404:
+                  console.log("unauthorized")
+                  break;
+                default:  
+                  alert.show("Seems like something's wrong on our end. Please contact the developers")
+              }
         }
         })
         .then(data => {

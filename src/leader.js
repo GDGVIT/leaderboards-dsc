@@ -70,8 +70,8 @@ class Leader extends React.Component{
         {this.showNav()}
           <div className="formparent max-width-setter">   
             <div> 
-              <h3>Today's Leaderboard</h3>
-              <a href="#" className="share ant-btn" >Share link</a>
+              <h3>Leaderboard</h3>
+              {/* <a href="#" className="share ant-btn">Share link</a> */}
               <Table dataSource={this.state.leaders}>
                 <Column title="Position" dataIndex="position" key="position" 
                   render={record => (

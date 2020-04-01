@@ -52,7 +52,7 @@ class Daily extends React.Component{
         if(localStorage.getItem("token") === this.props.location.state){
             console.log('.')
         }else{
-            this.props.history.push("/");
+            // this.props.history.push("/");
         }
 
         fetch('https://project-ideas-v2-backend.herokuapp.com/admin_app/latest_question/', {

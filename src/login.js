@@ -199,13 +199,7 @@ const giauth=(e)=>{
                 name="basic"
                 initialValues={{ remember: true }}
                 >
-                <Form.Item>
-                <ReCaptcha
-                    sitekey="6Lcwf-UUAAAAAOQBtsfwGEjG4Y6iEkmQqbDy1uAz"
-                    action='/'
-                    verifyCallback={verifyCallback}
-                />
-                </Form.Item>
+  
                 <Form.Item className="logincenter">
                 <Button type="primary" className="oauth" onClick={()=>fauth(true)}>
                         Login with <img src={flogo} alt="facebook"></img> 
@@ -225,6 +219,13 @@ const giauth=(e)=>{
                     <Button type="primary" className="oauth" onClick={()=>gauth(true)}>
                     Login with <img src={glogo} alt="google"></img> 
                     </Button>
+                </Form.Item>
+                <Form.Item>
+                <ReCaptcha
+                    sitekey="6Lcwf-UUAAAAAOQBtsfwGEjG4Y6iEkmQqbDy1uAz"
+                    action='/'
+                    verifyCallback={verifyCallback}
+                />
                 </Form.Item>
                 </Form>
 
