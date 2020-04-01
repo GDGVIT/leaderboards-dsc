@@ -36,7 +36,19 @@ class Daily extends React.Component{
             this.props.alert.show("You've already answered once!");
             console.log(response)
         }else{
-            this.props.alert.show(response.statusText);
+            switch(response.status){
+                case 401: 
+                  this.props.alert.show("something's wrong. Please try again later")
+                  break;
+                case 403:
+                  this.props.alert.show("Unauthorized. Please log in again and try")
+                  break;
+                case 404:
+                  console.log("Unauthorized. Please log in again and try")
+                  break;
+                default:  
+                  this.props.alert.show("Seems like something's wrong on our end. Please contact the developers")
+              }
         }
         })
         .then(data => {
@@ -77,12 +89,11 @@ class Daily extends React.Component{
             <div className="formparent ques">   
             <div> 
             <h3>Question</h3>
-            {/* <p>{this.state.elems}</p> */}
-            <p>Coming soon...</p>
+            <p>{this.state.elems}</p>
             <Form name="Daily-form" onFinish={this.onFinish}>
             <h3>Your answer</h3>
                 <Form.Item name="answer_body">
-                    <Input.TextArea placeholder="Daily challenges will begin soon"/>
+                    <Input.TextArea placeholder="Give a short answer. Write about what you want to implement"/>
                 </Form.Item>
 
             <Form.Item className="textbtn">

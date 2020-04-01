@@ -10,7 +10,7 @@ import gilogo from './assets/github.png';
 import flogo from './assets/facebook.png';
 import * as firebase from "firebase";
 import { ReCaptcha } from 'react-recaptcha-v3';
-
+import Faq from './faq';
 
 
 const Login = (props) => {
@@ -232,6 +232,9 @@ const giauth=(e)=>{
         <TabPane tab="Leaderboard" key="2">
         <Leader />
             
+        </TabPane>
+        <TabPane>
+            <Faq />
         </TabPane>
     </Tabs>
  
