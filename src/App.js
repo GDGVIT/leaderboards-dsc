@@ -13,6 +13,7 @@ import Admin from './admin.js';
 import Adminlogin from './adminlogin.js';
 import * as firebase from "firebase";
 import firebaseConfig from './firebase.config';
+import { loadReCaptcha } from 'react-recaptcha-v3';
 
 firebase.initializeApp(firebaseConfig);
 
@@ -38,6 +39,9 @@ class App extends React.Component {
         showNav: true
       })
     }
+  }
+  componentDidMount(){
+    loadReCaptcha("6Lcwf-UUAAAAAOQBtsfwGEjG4Y6iEkmQqbDy1uAz");
   }
   render(){
     return (
