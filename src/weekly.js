@@ -110,7 +110,7 @@ class Weekly extends React.Component{
             <div className="formparent ques">   
             <div> 
             <h3>Question</h3>
-            <p>How is the quarantine helping you build your skills? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut quarantine helping you build your skills? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam How is the quarantine helping you build your skills? Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+            <p>Coming soon</p>
             <Form name="Daily-form" onFinish={this.onFinish}>
             <h3>Your answer</h3>
                 <Form.Item name='answer_body' className="sikebich" >
