@@ -93,7 +93,7 @@ class Daily extends React.Component{
             <Form name="Daily-form" onFinish={this.onFinish}>
             <h3>Your answer</h3>
                 <Form.Item name="answer_body">
-                    <Input.TextArea placeholder="Daily challenges will begin soon"/>
+                    <Input.TextArea placeholder="Give a short answer. Write about what you want to implement"/>
                 </Form.Item>
 
             <Form.Item className="textbtn">
