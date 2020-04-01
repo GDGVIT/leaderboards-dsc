@@ -13,6 +13,7 @@ import Admin from './admin.js';
 import Adminlogin from './adminlogin.js';
 import * as firebase from "firebase";
 import firebaseConfig from './firebase.config';
+import { loadReCaptcha } from 'react-recaptcha-v3';
 
 firebase.initializeApp(firebaseConfig);
 
@@ -33,6 +34,7 @@ class App extends React.Component {
     }
 }
   componentDidUpdate(){
+    loadReCaptcha("6Lcwf-UUAAAAAOQBtsfwGEjG4Y6iEkmQqbDy1uAz");
     if(this.props.location.pathname !== "/"){
       this.setState({
         showNav: true

@@ -6,6 +6,7 @@ import dsc from './assets/dsclogo.png';
 import { useAlert } from 'react-alert';
 import glogo from './assets/glogo.png';
 import * as firebase from "firebase";
+import { ReCaptcha } from 'react-recaptcha-v3';
 
 var provider = new firebase.auth.GoogleAuthProvider();
 provider.addScope('profile');
@@ -21,14 +22,20 @@ const Login = (props) => {
       });
       const alert = useAlert()
 const { TabPane } = Tabs;
-
+var recaptok="";
+const verifyCallback = (recaptchaToken) => {
+    // Here you will get the final recaptchaToken!!!  
+    console.log(recaptchaToken, "<= your recaptcha token")
+    recaptok = recaptchaToken;
+  }
   const onFinish = values => {
 
     return fetch("https://project-ideas-v2-backend.herokuapp.com/app/normal_login/", {
         method: 'POST', // 'GET', 'PUT', 'DELETE', etc.
         body: JSON.stringify(values), // Coordinate the body type with 'Content-Type'
         headers: new Headers({
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'g-recaptcha-response': recaptok
         }),
       })
       .then(response => {
@@ -54,7 +61,8 @@ const { TabPane } = Tabs;
         method: 'POST', // 'GET', 'PUT', 'DELETE', etc.
         body: JSON.stringify(values), // Coordinate the body type with 'Content-Type'
         headers: new Headers({
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'g-recaptcha-response': recaptok
         }),
       })
       .then(response => {
@@ -102,7 +110,8 @@ const { TabPane } = Tabs;
                 method: 'POST', // 'GET', 'PUT', 'DELETE', etc.
                 body: JSON.stringify(values), // Coordinate the body type with 'Content-Type'
                 headers: new Headers({
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'g-recaptcha-response': recaptok
                 }),
             }).then(response => {
                 if(response.status === 200 || response.status===201 || response.status===202){
@@ -131,6 +140,7 @@ const { TabPane } = Tabs;
 
   return (
     <div className="form-holder logins" >  
+
     <Menu mode="horizontal">
                     <Menu.Item key="home" className="navz">
                         <img src={dsc} alt="dsc-vit home"></img>
@@ -191,6 +201,13 @@ const { TabPane } = Tabs;
                 onFinish={onFinish2}
                 onFinishFailed={onFinishFailed}
                 >
+                <Form.Item>
+                <ReCaptcha
+                    sitekey="6Lcwf-UUAAAAAOQBtsfwGEjG4Y6iEkmQqbDy1uAz"
+                    action='/'
+                    verifyCallback={verifyCallback}
+                />
+                </Form.Item>
                 <Form.Item
                     label="Username"
                     name="username"
