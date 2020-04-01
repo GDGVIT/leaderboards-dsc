@@ -168,7 +168,7 @@ const verifyCallback = (recaptchaToken) => {
                 >
                     <Input />
                 </Form.Item>
-
+   
                 <Form.Item
                     label="Password"
                     name="password"
@@ -176,6 +176,13 @@ const verifyCallback = (recaptchaToken) => {
                     ]}
                 >
                     <Input.Password />
+                </Form.Item>
+                <Form.Item>
+                <ReCaptcha
+                    sitekey="6Lcwf-UUAAAAAOQBtsfwGEjG4Y6iEkmQqbDy1uAz"
+                    action='/'
+                    verifyCallback={verifyCallback}
+                />
                 </Form.Item>
 
                 <Form.Item className="logincenter">
@@ -208,7 +215,7 @@ const verifyCallback = (recaptchaToken) => {
                     verifyCallback={verifyCallback}
                 />
                 </Form.Item>
-                <Form.Item
+                {/* <Form.Item
                     label="Username"
                     name="username"
                     rules={[{ required: true, message: 'Please input your username!' }]}
@@ -231,12 +238,12 @@ const verifyCallback = (recaptchaToken) => {
                             ]}
                 >
                     <Input.Password />
-                </Form.Item>
+                </Form.Item> */}
 
                 <Form.Item className="logincenter">
-                    <Button type="primary" htmlType="submit">
+                    {/* <Button type="primary" htmlType="submit">
                     Submit
-                    </Button>
+                    </Button> */}
                     <Button type="primary" className="oauth" onClick={()=>gauth(true)}>
                         Signup with <img src={glogo} alt="google"></img> 
                     </Button>

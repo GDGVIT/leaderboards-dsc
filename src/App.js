@@ -34,12 +34,14 @@ class App extends React.Component {
     }
 }
   componentDidUpdate(){
-    loadReCaptcha("6Lcwf-UUAAAAAOQBtsfwGEjG4Y6iEkmQqbDy1uAz");
     if(this.props.location.pathname !== "/"){
       this.setState({
         showNav: true
       })
     }
+  }
+  componentDidMount(){
+    loadReCaptcha("6Lcwf-UUAAAAAOQBtsfwGEjG4Y6iEkmQqbDy1uAz");
   }
   render(){
     return (
