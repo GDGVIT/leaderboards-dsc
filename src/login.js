@@ -169,7 +169,7 @@ const giauth=(e)=>{
                 console.log(data)
                 localStorage.setItem("token", 'Token '+data.User.token);
                 props.history.push({
-                    pathname: "/daily",
+                    pathname: "/leaderboard",
                     state: data.User.token
                 });
             })
