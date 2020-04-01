@@ -77,7 +77,8 @@ class Daily extends React.Component{
             <div className="formparent ques">   
             <div> 
             <h3>Question</h3>
-            <p>{this.state.elems}</p>
+            {/* <p>{this.state.elems}</p> */}
+            <p>Coming soon...</p>
             <Form name="Daily-form" onFinish={this.onFinish}>
             <h3>Your answer</h3>
                 <Form.Item name="answer_body">

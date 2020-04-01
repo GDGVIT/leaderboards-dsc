@@ -45,7 +45,7 @@ class Nav extends React.Component{
                     <Menu.Item key="leaderboard">
                         <NavLink to="/leaderboard">Leaderboard</NavLink>
                     </Menu.Item>
-                    <Menu.Item key="daily" disabled onClick={this.showalert}>
+                    <Menu.Item key="daily" onClick={this.showalert}>
                         <NavLink to="/daily">Daily Challenge</NavLink>
                     </Menu.Item>
                     <Menu.Item key="weekly" disabled onClick={this.showalert}>
