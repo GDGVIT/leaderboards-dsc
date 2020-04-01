@@ -33,8 +33,15 @@ class Weekly extends React.Component{
         })
     }
     send = () =>{
+        var sending
+        var sentlinks = this.state.thelinks;
+        // console.log(sentlinks)
+        sentlinks.forEach(l=>{
+            sending+=(l+', ');
+        })
+        console.log(sending)
         let send = {
-            'answer_body': this.state.thelinks,
+            'answer_body': sending,
             'answer_type': 1,
             'weekly_challenge': 1
         }
@@ -53,19 +60,19 @@ class Weekly extends React.Component{
         }else{
             switch(response.status){
                 case 400: 
-                    alert.show("You have already answered once")
+                    this.props.alert.show("You have already answered once")
                     break;
                 case 401: 
-                  alert.show("something's wrong. Please try again later")
+                  this.props.alert.show("something's wrong. Please try again later")
                   break;
                 case 403:
-                  alert.show("unauthorized")
+                  this.props.alert.show("unauthorized")
                   break;
                 case 404:
                   console.log("unauthorized")
                   break;
                 default:  
-                  alert.show("Seems like something's wrong on our end. Please contact the developers")
+                  this.props.alert.show("Seems like something's wrong on our end. Please contact the developers")
               }
         }
         })

@@ -249,6 +249,7 @@ margin: auto auto;
   display: block;
     min-width: 546px;
     overflow: auto;
+    margin-top: 50px;
 }
 .form-holder{
   overflow: auto;
