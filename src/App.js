@@ -11,8 +11,10 @@ import { transitions, positions, Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 import Admin from './admin.js';
 import Adminlogin from './adminlogin.js';
+import * as firebase from "firebase";
+import firebaseConfig from './firebase.config';
 
-
+firebase.initializeApp(firebaseConfig);
 
 const options = {
   // you can also just use 'bottom center'

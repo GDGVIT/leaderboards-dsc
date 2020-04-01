@@ -19,7 +19,7 @@ class Admin extends React.Component{
     }
     quer = null;
     logout = () =>{
-        fetch(url + "/admin_app/logout/", {
+        fetch(url + "admin_app/logout/", {
             headers: new Headers({
                 'Authorization': localStorage.getItem("admintoken")
                 })

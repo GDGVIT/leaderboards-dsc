@@ -49,8 +49,8 @@ class Daily extends React.Component{
 
 
       componentDidMount(){
-        if(localStorage.getItem("token")){
-            console.log(".")
+        if(localStorage.getItem("token") === this.props.location.state){
+            console.log('.')
         }else{
             this.props.history.push("/");
         }

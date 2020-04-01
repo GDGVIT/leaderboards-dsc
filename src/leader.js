@@ -2,13 +2,19 @@ import React from 'react'
 import {withRouter} from 'react-router-dom';
 import { Table, Tag } from 'antd';
 import Nav from './nav';
+import trophy from './assets/trophy.png';
+import silver from './assets/silver.png';
+import bronze from './assets/bronze.png';
+  
+const { Column } = Table;
+
 
 const columns = [
   {
     title: 'Position',
     dataIndex: 'position',
     key: 'position',
-    render: text => <a>{text}</a>,
+    render: (text,record) =>( <a>{text}</a>),
   },
   {
     title: 'Name',
@@ -28,7 +34,7 @@ class Leader extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      leaders: []
+      leaders: [],
     }
   }
   componentDidMount(){
@@ -49,15 +55,35 @@ class Leader extends React.Component{
         return(<Nav active="leaderboard"/>);
       }
     }
+    showimg=(v)=>{
+      if(v===1){
+        return(<img src={trophy} alt="gold"></img>)
+      }else if(v===2){
+        return(<img src={silver} alt="silver"></img>)
+      }else if(v===3){
+        return(<img src={bronze} alt="bronze"></img>)
+      }
+    }
     render(){
         return(
         <div className="form-holder">  
         {this.showNav()}
           <div className="formparent">   
             <div> 
-              <h3>Leaderboard for today</h3>
+              <h3>Today's Leaderboard</h3>
               <a href="#" className="share ant-btn" >Share link</a>
-              <Table columns={columns} dataSource={this.state.leaders} />
+              <Table dataSource={this.state.leaders}>
+                <Column title="Position" dataIndex="position" key="position" 
+                  render={record => (
+                      <span>
+                        {this.showimg(record)}
+                        {record}
+                      </span>
+                )}
+                />
+                <Column title="Name" dataIndex="username" key="username" />
+                <Column title="Score" dataIndex="marks" key="marks" />
+              </Table>
             </div>
           </div>
         </div>
