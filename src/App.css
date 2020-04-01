@@ -250,6 +250,7 @@ margin: auto auto;
     min-width: 546px;
     overflow: auto;
     margin-top: 50px;
+    margin-bottom: 20px;
 }
 .form-holder{
   overflow: auto;

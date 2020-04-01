@@ -187,11 +187,8 @@ const giauth=(e)=>{
                     </Menu.Item>
     </Menu>
     <Tabs defaultActiveKey="1">
-        <TabPane tab="Leaderboard" key="1">
-        <Leader />
-            
-        </TabPane>
-        <TabPane tab="Login" key="2">
+
+        <TabPane tab="Login" key="1">
         <div className="formparent loginz">   
             <div> 
                 <h3>We use Oauth to prevent abuse</h3>
@@ -231,6 +228,10 @@ const giauth=(e)=>{
 
             </div>
         </div>
+        </TabPane>
+        <TabPane tab="Leaderboard" key="2">
+        <Leader />
+            
         </TabPane>
     </Tabs>
  
