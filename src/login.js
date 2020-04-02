@@ -49,7 +49,7 @@ const verifyCallback = (recaptchaToken) => {
             // console.log(token)
             // The signed-in user info.
             var user = result.user;
-            console.log(user)
+            // console.log(user)
             postform(user, 'google');
             
     }).catch(function(error){
@@ -102,7 +102,7 @@ const verifyCallback = (recaptchaToken) => {
             // var secret = result.credential.secret;
             // The signed-in user info.
             var user = result.user;
-            console.log(user)
+            // console.log(user)
             postform(user, 'twitter');
 
             // ...
@@ -127,7 +127,7 @@ const giauth=(e)=>{
             // var token = result.credential.accessToken;
             // The signed-in user info.
             var user = result.user;
-            console.log(user)
+            // console.log(user)
             postform(user, 'github');
             // ...
           }).catch(function(error) {
@@ -172,11 +172,11 @@ const giauth=(e)=>{
             }
             })
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 localStorage.setItem("token", 'Token '+data.User.token);
                 props.history.push({
                     pathname: "/leaderboard",
-                    state: data.User.token
+                    state: data
                 });
             })
             .catch(error => {
@@ -238,7 +238,7 @@ const giauth=(e)=>{
         <Leader />
             
         </TabPane>
-        <TabPane>
+        <TabPane tab="Faq" key="3">
             <Faq />
         </TabPane>
     </Tabs>

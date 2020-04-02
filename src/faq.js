@@ -1,12 +1,17 @@
 import React from 'react'
 import Nav from './nav';
+import { withRouter } from 'react-router-dom';
 
 class Faq extends React.Component{
+  showNav = () => {
+    if(this.props.location.pathname !== '/'){
+      return(<Nav active="faq"/>);
+    }
+  }
     render(){
         return(
-    
         <div className="form-holder">  
-          <Nav active="faq"/>
+                  {this.showNav()}
             <div className="formparent ques">   
             <div> 
             <h3>Basic Rules</h3>
@@ -33,4 +38,4 @@ class Faq extends React.Component{
     }
 }
 
-export default Faq;
+export default withRouter(Faq);
