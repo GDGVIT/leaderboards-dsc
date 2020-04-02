@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { Form, Input, Button, Menu, Tabs} from 'antd';
+import { Form, Button, Menu, Tabs} from 'antd';
 import {withRouter} from 'react-router-dom';
 import Leader from './leader';
 import dsc from './assets/dsclogo.png';
@@ -18,8 +18,6 @@ const Login = (props) => {
 provider.addScope('profile');
 provider.addScope('email');
 var fprovider = new firebase.auth.FacebookAuthProvider();
-fprovider.addScope('id');
-fprovider.addScope('name');
 fprovider.addScope('email');
 var tprovider = new firebase.auth.TwitterAuthProvider();
 var gprovider = new firebase.auth.GithubAuthProvider();
@@ -47,22 +45,23 @@ const verifyCallback = (recaptchaToken) => {
     if(e){
         firebase.auth().signInWithPopup(provider).then(function(result) {
             // This gives you a Google Access Token.
-            var token = result.credential.accessToken;
+            // var token = result.credential.accessToken;
             // console.log(token)
             // The signed-in user info.
             var user = result.user;
             console.log(user)
-            postform(user);
+            postform(user, 'google');
             
     }).catch(function(error){
-        var errorCode = error.code;
+        // var errorCode = error.code;
             // console.log('errorCode', errorCode)
             var errorMessage = error.message;
+            alert.show(errorMessage)
             // console.log('errormsg', errorMessage)
             // The email of the user's account used.
-            var email = error.email;
+            // var email = error.email;
             // The firebase.auth.AuthCredential type that was used.
-            var credential = error.credential;
+            // var credential = error.credential;
     });
         }
   }
@@ -71,23 +70,24 @@ const verifyCallback = (recaptchaToken) => {
     if(e){
         firebase.auth().signInWithPopup(fprovider).then(function(result) {
             // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-            var token = result.credential.accessToken;
+            // var token = result.credential.accessToken;
             // The signed-in user info.
             var user = result.user;
             console.log(user)
-            postform(user);
+            postform(user, 'facebook');
 
             // ...
           }).catch(function(error) {
             // Handle Errors here.
-            var errorCode = error.code;
-            console.log('errorCode', errorCode)
+            // var errorCode = error.code;
+            // console.log('errorCode', errorCode)
             var errorMessage = error.message;
-            console.log('errormsg', errorMessage)
+            alert.show(errorMessage)
+            // console.log('errormsg', errorMessage)
             // The email of the user's account used.
-            var email = error.email;
+            // var email = error.email;
             // The firebase.auth.AuthCredential type that was used.
-            var credential = error.credential;
+            // var credential = error.credential;
             // ...
           });
         
@@ -98,22 +98,23 @@ const verifyCallback = (recaptchaToken) => {
         firebase.auth().signInWithPopup(tprovider).then(function(result) {
             // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
             // You can use these server side with your app's credentials to access the Twitter API.
-            var token = result.credential.accessToken;
-            var secret = result.credential.secret;
+            // var token = result.credential.accessToken;
+            // var secret = result.credential.secret;
             // The signed-in user info.
             var user = result.user;
             console.log(user)
-            postform(user);
+            postform(user, 'twitter');
 
             // ...
           }).catch(function(error) {
             // Handle Errors here.
-            var errorCode = error.code;
+            // var errorCode = error.code;
             var errorMessage = error.message;
+            alert.show(errorMessage)
             // The email of the user's account used.
-            var email = error.email;
+            // var email = error.email;
             // The firebase.auth.AuthCredential type that was used.
-            var credential = error.credential;
+            // var credential = error.credential;
             // ...
           });
     }
@@ -123,31 +124,33 @@ const giauth=(e)=>{
     if(e){
         firebase.auth().signInWithPopup(gprovider).then(function(result) {
             // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-            var token = result.credential.accessToken;
+            // var token = result.credential.accessToken;
             // The signed-in user info.
             var user = result.user;
             console.log(user)
-            postform(user);
+            postform(user, 'github');
             // ...
           }).catch(function(error) {
             // Handle Errors here.
-            var errorCode = error.code;
+            // var errorCode = error.code;
             var errorMessage = error.message;
+            alert.show(errorMessage)
+
             // The email of the user's account used.
-            var email = error.email;
-            // The firebase.auth.AuthCredential type that was used.
-            var credential = error.credential;
+            // var email = error.email;
+            // // The firebase.auth.AuthCredential type that was used.
+            // var credential = error.credential;
             // ...
           });
   
     }  }
 
-    const postform = (user) =>{
+    const postform = (user, p) =>{
         let values = {
             "username":user.displayName,
             "platform":0,
             "email":user.email,
-            "platform_name":"google",
+            "platform_name":p,
             "social_user_id":user.uid,
             "g-recaptcha-response": recaptok
         }
@@ -161,7 +164,10 @@ const giauth=(e)=>{
             if(response.status === 200 || response.status===201 || response.status===202){
                 return response.json();
             }else{
-                console.log(response)
+                // console.log(response)
+                if(response.code===406){
+                    alert.show("Recaptcha not verified. Try again later")
+                }
                 alert.show(response.statusText);
             }
             })
@@ -196,7 +202,6 @@ const giauth=(e)=>{
                 name="basic"
                 initialValues={{ remember: true }}
                 >
-  
                 <Form.Item className="logincenter">
                 <Button type="primary" className="oauth" onClick={()=>fauth(true)}>
                         Login with <img src={flogo} alt="facebook"></img> 
