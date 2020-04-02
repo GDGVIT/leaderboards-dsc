@@ -35,7 +35,7 @@ const { TabPane } = Tabs;
 var recaptok="";
 const verifyCallback = (recaptchaToken) => {
     // Here you will get the final recaptchaToken!!!  
-    console.log(recaptchaToken, "<= your recaptcha token")
+    // console.log(recaptchaToken, "<= your recaptcha token")
     recaptok = recaptchaToken;
 }
   
