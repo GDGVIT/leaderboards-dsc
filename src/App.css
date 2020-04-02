@@ -248,8 +248,6 @@ margin: auto auto;
   }
 .max-width-setter{
   display: block;
-    min-width: 546px;
-    overflow: auto;
     margin-top: 50px;
     margin-bottom: 20px;
 }
@@ -262,5 +260,8 @@ margin: auto auto;
   }
   .logins .loginz{
     height: 400px;
+  }
+  .ant-table-content{
+    font-size: 10px
   }
 }
