@@ -29,7 +29,30 @@ class Nav extends React.Component{
         }
       };
       logout=()=>{
+        fetch('https://project-ideas-v2-backend.herokuapp.com/app/logout/', {
+            headers: new Headers({
+                'Authorization': localStorage.getItem("token")
+                }),
+        }).then(response => {
+            if(response.status === 200 || response.status===201 || response.status===202){
+                return response.json();
+            }else{
+                if(response.status===406){
+                    alert.show("Unauthorized user")
+                    this.props.history.push("/login")
+                }
+            }
+        }).then(data=>{
+            alert.show(data.message)
+        })
+        .catch(error=>{
+            console.error(error);
+            
+        })
+
+
           localStorage.removeItem("token");
+
             this.props.history.push("/");
       }
         showalert=()=>{
