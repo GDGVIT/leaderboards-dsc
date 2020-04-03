@@ -1,6 +1,6 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom';
-import { Table, Tag } from 'antd';
+import { Table} from 'antd';
 import Nav from './nav';
 import trophy from './assets/trophy.png';
 import silver from './assets/silver.png';
@@ -8,26 +8,6 @@ import bronze from './assets/bronze.png';
   
 const { Column } = Table;
 
-
-const columns = [
-  {
-    title: 'Position',
-    dataIndex: 'position',
-    key: 'position',
-    render: (text,record) =>( <a>{text}</a>),
-  },
-  {
-    title: 'Name',
-    dataIndex: 'username',
-    key: 'username',
-    render: text => <strong>{text}</strong>,
-  },
-  {
-    title: 'Score',
-    dataIndex: 'marks',
-    key: 'marks',
-  },
-];
 
 
 class Leader extends React.Component{

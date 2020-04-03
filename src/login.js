@@ -8,7 +8,8 @@ import glogo from './assets/glogo.png';
 import tlogo from './assets/twitter.png';
 import gilogo from './assets/github.png';
 import flogo from './assets/facebook.png';
-import * as firebase from "firebase";
+import firebase from "firebase/app";
+import 'firebase/auth';
 import { ReCaptcha } from 'react-recaptcha-v3';
 import Faq from './faq';
 
@@ -73,7 +74,7 @@ const verifyCallback = (recaptchaToken) => {
             // var token = result.credential.accessToken;
             // The signed-in user info.
             var user = result.user;
-            console.log(user)
+            // console.log(user)
             postform(user, 'facebook');
 
             // ...

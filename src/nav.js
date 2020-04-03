@@ -2,8 +2,7 @@ import React from 'react'
 import {NavLink, withRouter} from 'react-router-dom';
 import {Menu} from 'antd';
 import dsc from './assets/dsclogo.png';
-import {compose} from 'recompose';
-import { withAlert } from 'react-alert';
+
 
 class Nav extends React.Component{
     constructor(props){
