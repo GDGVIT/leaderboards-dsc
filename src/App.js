@@ -6,13 +6,13 @@ import Daily from './daily';
 import Login from './login';
 import Weekly from './weekly';
 import Leader from './leader';
-import Nav from './nav';
+// import Nav from './nav';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 import Admin from './admin.js';
 import Adminlogin from './adminlogin.js';
 import Faq from './faq.js'
-import * as firebase from "firebase";
+import firebase from "firebase/app";
 import firebaseConfig from './firebase.config';
 import { loadReCaptcha } from 'react-recaptcha-v3';
 
