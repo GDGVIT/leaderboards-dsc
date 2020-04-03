@@ -93,6 +93,7 @@ class Admin extends React.Component{
         })
         .then(response => response.json())
         .then(data => {
+            this.props.alert.show("Question added")
         console.log(data) // Prints result from `response.json()` in getRequest
         })
         .catch(error => console.error(error))
@@ -133,7 +134,8 @@ class Admin extends React.Component{
             })
             .then(response => response.json())
             .then(data => {
-            console.log(data) // Prints result from `response.json()` in getRequest
+            console.log(data) 
+            this.props.alert.show(data.message)// Prints result from `response.json()` in getRequest
             })
             .catch(error => console.error(error))
           }
