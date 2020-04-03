@@ -42,7 +42,7 @@ class Leader extends React.Component{
       })
       .then(response => response.json())
       .then(data2 => {
-        console.log(data2.message)
+        // console.log(data2.message)
         this.setState({
           leaders: data2.message
         })
