@@ -31,6 +31,7 @@ class Daily extends React.Component{
       })
       .then(response => {
         if(response.status === 200 || response.status===201 || response.status===202){
+            this.props.alerts.show("Answer saved")
         return response.json();
         }else if(response.status === 400){
             this.props.alert.show("You've already answered once!");
@@ -44,8 +45,8 @@ class Daily extends React.Component{
                   this.props.alert.show("Unauthorized. Please log in again and try")
                   break;
                 case 404:
-                  console.log("Unauthorized. Please log in again and try")
-                  break;
+                    this.props.alert.show("Unauthorized. Please log in again and try")
+                    break;
                 default:  
                   this.props.alert.show("Seems like something's wrong on our end. Please contact the developers")
               }
