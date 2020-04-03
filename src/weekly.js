@@ -13,11 +13,11 @@ class Weekly extends React.Component{
         }
     }
     log = (e) => {
-        console.log(e);
+        // console.log(e);
       }
     onFinish = values => {
         // console.log(values.answer_body)
-        document.getElementById("Daily-form_answer_body").innerHTML = "";
+        document.getElementById("inp").innerHTML = "";
         if(values.answer_body && values.answer_body !== ""){
             links[n] = values.answer_body;
             n += 1;
@@ -29,7 +29,7 @@ class Weekly extends React.Component{
     }
     addTag=()=>{
         this.state.thelinks.forEach((e, i) => {
-            console.log(e, i)
+            // console.log(e, i)
         })
     }
     send = () =>{
@@ -39,7 +39,7 @@ class Weekly extends React.Component{
         sentlinks.forEach(l=>{
             sending+=(l+', ');
         })
-        console.log(sending)
+        // console.log(sending)
         let send = {
             'answer_body': sending,
             'answer_type': 1,
@@ -85,7 +85,7 @@ class Weekly extends React.Component{
       }
       componentDidMount(){
           if(localStorage.getItem("token")){
-              console.log(".")
+            //   console.log(".")
           }else{
               this.props.history.push("/");
           }
@@ -114,7 +114,7 @@ class Weekly extends React.Component{
             <Form name="Daily-form" onFinish={this.onFinish}>
             <h3>Your answer</h3>
                 <Form.Item name='answer_body' className="sikebich" >
-                    <Input placeholder="Project link(s)"/>
+                    <Input ref="inp" placeholder="Project link(s)"/>
                 </Form.Item>
                 <div>
                     {taglist}

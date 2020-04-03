@@ -35,7 +35,7 @@ class Daily extends React.Component{
         return response.json();
         }else if(response.status === 400){
             this.props.alert.show("You've already answered once!");
-            console.log(response)
+            // console.log(response)
         }else{
             switch(response.status){
                 case 401: 
@@ -53,7 +53,7 @@ class Daily extends React.Component{
         }
         })
         .then(data => {
-            console.log(data)
+            // console.log(data)
         })
         .catch(error => {
             console.log(error)
@@ -62,17 +62,17 @@ class Daily extends React.Component{
 
 
       componentDidMount(){
-        if(localStorage.getItem("token") === this.props.location.state){
-            console.log('.')
+        if(localStorage.getItem("token")){
+            // console.log('.')
         }else{
-            // this.props.history.push("/");
+            this.props.history.push("/");
         }
 
         fetch('https://project-ideas-v2-backend.herokuapp.com/admin_app/latest_question/', {
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 chal = data.Question.id;
                 this.setState({
                     elems: data.Question.question_body

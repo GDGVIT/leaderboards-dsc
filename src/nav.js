@@ -19,7 +19,7 @@ class Nav extends React.Component{
     }
 
     handleClick = e => {
-        console.log('click ', e);
+        // console.log('click ', e);
         if(e.key === "home"){
             window.location='http://www.dscvit.com';
         }else{
