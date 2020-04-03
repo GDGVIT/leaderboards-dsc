@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import {BrowserRouter, Route, withRouter} from 'react-router-dom';
+import {BrowserRouter, Route, withRouter, Switch} from 'react-router-dom';
 import './App.css';
 import Daily from './daily';
 import Login from './login';
@@ -41,6 +41,9 @@ class App extends React.Component {
       })
     }
   }
+  page404 = () =>{
+    return(<div>This match found for {this.props.location.pathname}</div>)
+  }
   componentDidMount(){
     loadReCaptcha("6Lcwf-UUAAAAAOQBtsfwGEjG4Y6iEkmQqbDy1uAz");
   }
@@ -49,6 +52,7 @@ class App extends React.Component {
       <BrowserRouter>
       <AlertProvider template={AlertTemplate} {...options}>
       <div className="App">
+      <Switch>
           <Route exact path='/' component={Login}/>
           <Route exact path='/daily' component={Daily}/>
           <Route exact path='/weekly' component={Weekly}/>
@@ -56,6 +60,8 @@ class App extends React.Component {
           <Route exact path='/faq' component={Faq}/>
           <Route exact path='/adminpanel' component={Admin}/>
           <Route exact path='/adminlogin' component={Adminlogin}/>
+          <Route component={this.page404}/>
+          </Switch>
       </div>
       </AlertProvider>
       </BrowserRouter>
