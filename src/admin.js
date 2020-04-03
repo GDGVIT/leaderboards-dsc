@@ -14,7 +14,8 @@ class Admin extends React.Component{
         this.state={
             querydq: "",
             cu: null,
-            ans: []
+            ans: [],
+            unevans: [],
         }
     }
     quer = null;
@@ -26,6 +27,7 @@ class Admin extends React.Component{
         })
         .then(response => response.json())
         .then(data => {
+            localStorage.removeItem("admintoken")
             this.props.history.push("/adminlogin")
         })
         .catch(error => console.error(error))
@@ -49,7 +51,32 @@ class Admin extends React.Component{
                     ans: data.message
                 })
             })
-            .catch(error => console.error(error))
+            .catch(error => console.error(error));
+
+            fetch(url+'admin_app/unevaluated_answers/', {
+                headers: new Headers({
+                    'Authorization': localStorage.getItem("admintoken")
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    this.setState({
+                        unevans: data.message
+                    })
+                })
+                .catch(error => console.error(error))
+
+             fetch('https://project-ideas-v2-backend.herokuapp.com/admin_app/latest_question/', {
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    this.setState({
+                        elems: data.Question
+                    })
+                })
+                .catch(error => console.error(error))
     }
   
         
@@ -112,7 +139,7 @@ class Admin extends React.Component{
           }
           coloumns = [
             {
-              title: 'ID',
+              title: 'ans ID',
               dataIndex: 'id',
               key: 'id',
             },
@@ -149,7 +176,7 @@ class Admin extends React.Component{
             ];
             anscol = [
                 {
-                    title: 'ID',
+                    title: 'ans ID',
                     dataIndex: 'id',
                     key: 'id',
                   },
@@ -159,6 +186,7 @@ class Admin extends React.Component{
                     key: 'answer_body',
                   },
             ]
+            
     render(){                
         return(
             <div>
@@ -187,8 +215,10 @@ class Admin extends React.Component{
                         </Form>
                     </div>
                     <div>
+                    <h2>All Answers</h2>
                     <Table columns={this.coloumns} dataSource={this.state.ans}/>
-                    <Table columns={this.anscol} dataSource={this.state.ans}/>
+                    <h2>unevaluated answers</h2>
+                    <Table columns={this.anscol} dataSource={this.state.unevans}/>
                     </div>
                     <div>
                     <Form onFinish={this.onFinishMarks}>
@@ -205,6 +235,9 @@ class Admin extends React.Component{
                                 <Button type="primary" htmlType="submit">Submit</Button>
                             </Form.Item>
                     </Form>
+                    </div>
+                    <div>
+                        {/* <h2>Filter answer by date</h2> */}
                     </div>
                 </div>  
             </div>
