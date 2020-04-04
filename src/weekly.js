@@ -17,7 +17,6 @@ class Weekly extends React.Component{
       }
     onFinish = values => {
         // console.log(values.answer_body)
-        document.getElementById("inp").innerHTML = "";
         if(values.answer_body && values.answer_body !== ""){
             links[n] = values.answer_body;
             n += 1;
@@ -114,7 +113,7 @@ class Weekly extends React.Component{
             <Form name="Daily-form" onFinish={this.onFinish}>
             <h3>Your answer</h3>
                 <Form.Item name='answer_body' className="sikebich" >
-                    <Input ref="inp" placeholder="Project link(s)"/>
+                    <Input placeholder="Project link(s)"/>
                 </Form.Item>
                 <div>
                     {taglist}
