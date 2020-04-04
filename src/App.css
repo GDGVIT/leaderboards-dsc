@@ -302,7 +302,7 @@ margin: auto auto;
   .timer{
     display: block;
     position: fixed;
-    top: 9%;
+    top: 50px;
     left: 37%;
   }
   .timer *{
