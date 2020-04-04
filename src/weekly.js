@@ -130,8 +130,8 @@ class Weekly extends React.Component{
 
             <div className="formparent ques">   
             <div> 
-            <h3>Question</h3>
-            <p>Task: In normal calculators, we have a limitation on the size of numbers we can use for calculations. Develop a calculator that can be used for numbers of any size.</p>
+            <h3>Task</h3>
+            <p>In normal calculators, we have a limitation on the size of numbers we can use for calculations. Develop a calculator that can be used for numbers of any size.</p>
             <Form name="Daily-form" onFinish={this.onFinish}>
             <h3>Your answer</h3>
                 <Form.Item name='answer_body' className="sikebich" >
