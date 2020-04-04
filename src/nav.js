@@ -54,9 +54,7 @@ class Nav extends React.Component{
 
             this.props.history.push("/");
       }
-        showalert=()=>{
-            alert("Coming soon")
-        }
+        
     render(){
         return(
             <div>
@@ -70,7 +68,7 @@ class Nav extends React.Component{
                     <Menu.Item key="daily">
                         <NavLink to="/daily">Daily Challenge</NavLink>
                     </Menu.Item>
-                    <Menu.Item key="weekly" disabled onClick={this.showalert}>
+                    <Menu.Item key="weekly">
                         <NavLink to="/weekly">Weekly Challenge</NavLink>
                     </Menu.Item>
                     <Menu.Item key="faq">
