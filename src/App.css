@@ -86,6 +86,7 @@ body{
   .textbtn2{
     margin-top: 0px;
   }
+
 }
 @media(max-width: 1200px){
   .textbtn2{
@@ -203,6 +204,25 @@ margin: auto auto;
     .ant-tabs{
       width: 95%;
     }
+
+  }
+  @media(max-width: 992px) and (min-width: 769px){
+    .timer{
+      left: 30% !important;
+    }
+  }
+  @media(max-width: 768px) and (min-width: 521px){
+    .timer{
+      left: 16% !important;
+    }
+  }
+  @media(max-width: 520px){
+    .timer{
+      left: 8% !important;
+    }
+    .timer *{
+      font-size: 12px;
+    }
   }
   .sikebich{
     margin-bottom: 0;
@@ -274,4 +294,21 @@ margin: auto auto;
     max-width: 100px;
     text-overflow: ellipsis; 
   }
+  .timer{
+    left: 10% !important;
+  }
 }
+
+  .timer{
+    display: block;
+    position: fixed;
+    top: 9%;
+    left: 37%;
+  }
+  .timer *{
+    display: inline;
+    font-weight: bold;
+  }
+  .grecaptcha-badge{
+    display: none !important;
+  }

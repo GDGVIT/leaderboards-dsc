@@ -9,7 +9,11 @@ class Weekly extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            thelinks: []
+            thelinks: [],
+            days: '',
+            hours:'',
+            minutes:'',
+            seconds:''
         }
     }
     log = (e) => {
@@ -82,13 +86,31 @@ class Weekly extends React.Component{
             console.log(error)
         });
       }
+
+      showDate=(endtime)=>{
+        var t = Date.parse(endtime) - Date.parse(new Date());
+        var seconds = Math.floor( (t/1000) % 60 );
+        var minutes = Math.floor( (t/1000/60) % 60 );
+        var hours = Math.floor( (t/(1000*60*60)) % 24 );
+        var days = Math.floor( t/(1000*60*60*24) );
+        
+        this.setState({
+            days: days,
+            hours: hours,
+            minutes: minutes,
+            seconds: seconds
+        })
+      } 
       componentDidMount(){
-          if(localStorage.getItem("token")){
-            //   console.log(".")
-          }else{
-              this.props.history.push("/");
-          }
-      }
+        if(localStorage.getItem("token")){
+          //   console.log(".")
+        }else{
+            this.props.history.push("/");
+        }
+        setInterval(() => {
+            this.showDate("April 11 2020 11:00:00 GMT+0530");
+        }, 1000);
+    }
 
     render(){
         const { thelinks } = this.state;
@@ -129,6 +151,13 @@ class Weekly extends React.Component{
             </Form.Item>
             </Form>
             </div>
+            </div>
+            <div className="timer">
+            <h3>Time left: </h3>
+                <p>Days: {this.state.days}</p>
+                <p>, Hours: {this.state.hours}</p>
+                <p>, Minutes: {this.state.minutes}</p>
+                <p>, Seconds: {this.state.seconds}</p>
             </div>
           </div>
 
