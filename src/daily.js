@@ -59,6 +59,20 @@ class Daily extends React.Component{
             console.log(error)
         });
     };
+    showDate=(endtime)=>{
+        var t = Date.parse(endtime) - Date.parse(new Date());
+        var seconds = Math.floor( (t/1000) % 60 );
+        var minutes = Math.floor( (t/1000/60) % 60 );
+        var hours = Math.floor( (t/(1000*60*60)) % 24 );
+        var days = Math.floor( t/(1000*60*60*24) );
+        
+        this.setState({
+            days: days,
+            hours: hours,
+            minutes: minutes,
+            seconds: seconds
+        })
+      } 
 
 
       componentDidMount(){
@@ -74,24 +88,35 @@ class Daily extends React.Component{
             .then(data => {
                 // console.log(data)
                 chal = data.Question.id;
+                // console.log(data.Question.question_body)
                 this.setState({
                     elems: data.Question.question_body
                 })
             })
             .catch(error => console.error(error))
+// console.log(new Date())
+            setInterval(() => {
+                this.showDate("April 06 2020 11:00:00 GMT+0530");
+            }, 1000);
         }
-                
+
 
     render(){
         return(
             <div className="form-holder">  
         <Nav active="daily"/>
-
+        <div className="timer">
+            <h3>Time left: </h3>
+                <p>Days: {this.state.days}</p>
+                <p>, Hours: {this.state.hours}</p>
+                <p>, Minutes: {this.state.minutes}</p>
+                <p>, Seconds: {this.state.seconds}</p>
+            </div>
             <div className="formparent ques">   
             <div> 
             <h3>Question</h3>
             {/* <p>Next daily question will be available on sunday 11AM</p> */}
-            <p>{this.state.elems}</p>
+            <p className="daily-ques">{this.state.elems}</p>
             <Form name="Daily-form" onFinish={this.onFinish}>
             <h3>Your answer</h3>
                 <Form.Item name="answer_body">
