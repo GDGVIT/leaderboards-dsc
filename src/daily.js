@@ -90,12 +90,12 @@ class Daily extends React.Component{
             <div className="formparent ques">   
             <div> 
             <h3>Question</h3>
-            <p>Next daily question will be available on sunday 11AM</p>
-            {/* <p>{this.state.elems}</p> */}
+            {/* <p>Next daily question will be available on sunday 11AM</p> */}
+            <p>{this.state.elems}</p>
             <Form name="Daily-form" onFinish={this.onFinish}>
             <h3>Your answer</h3>
                 <Form.Item name="answer_body">
-                    <Input.TextArea disabled placeholder="Give a short answer. Write about what you want to implement"/>
+                    <Input.TextArea placeholder="Give a short answer. Write about what you want to implement"/>
                 </Form.Item>
 
             <Form.Item className="textbtn">
