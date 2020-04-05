@@ -312,3 +312,7 @@ margin: auto auto;
   .grecaptcha-badge{
     display: none !important;
   }
+
+  .daily-ques{
+    white-space: pre-line;
+  }
