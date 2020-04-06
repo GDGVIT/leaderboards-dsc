@@ -27,8 +27,8 @@ class Weekly extends React.Component{
             this.setState({
                 thelinks: links
             });
-            // console.log(this.state)
         }
+        // console.log(this.state)
     }
     addTag=()=>{
         this.state.thelinks.forEach((e, i) => {
@@ -36,13 +36,14 @@ class Weekly extends React.Component{
         })
     }
     send = () =>{
-        var sending
+        var sending='';
         var sentlinks = this.state.thelinks;
         // console.log(sentlinks)
         sentlinks.forEach(l=>{
+            // console.log(l)
             sending+=(l+', ');
         })
-        // console.log(sending)
+        console.log(sending)
         let send = {
             'answer_body': sending,
             'answer_type': 1,
@@ -80,10 +81,11 @@ class Weekly extends React.Component{
         }
         })
         .then(data => {
+            // console.log(data)
            this.props.alert.show(data.message)
         })
         .catch(error => {
-            console.log(error)
+            // console.log(error)
         });
       }
 
@@ -134,7 +136,7 @@ class Weekly extends React.Component{
             <p>In normal calculators, we have a limitation on the size of numbers we can use for calculations. Develop a calculator that can be used for numbers of any size.</p>
             <Form name="Daily-form" onFinish={this.onFinish}>
             <h3>Your answer</h3>
-                <Form.Item name='answer_body' className="sikebich" >
+                <Form.Item name='answer_body' className="sikebich" rules={[{required:true, message:"You can't leave this empty"}]}>
                     <Input placeholder="Project link(s)"/>
                 </Form.Item>
                 <div>
