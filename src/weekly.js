@@ -65,7 +65,7 @@ class Weekly extends React.Component{
             }else{
                 switch(response.status){
                     case 400: 
-                        this.props.alert.show("You have already answered once")
+                        this.props.alert.show("You can't submit an empty response")
                         break;
                     case 401: 
                       this.props.alert.show("something's wrong. Please try again later")
