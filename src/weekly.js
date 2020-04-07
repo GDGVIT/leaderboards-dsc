@@ -49,44 +49,49 @@ class Weekly extends React.Component{
             'answer_type': 1,
             'weekly_challenge': 1
         }
-        let tok = localStorage.getItem("token");
-        return fetch("https://project-ideas-v2-backend.herokuapp.com/admin_app/answer/", {
-        method: 'POST', // 'GET', 'PUT', 'DELETE', etc.
-        body: JSON.stringify(send), // Coordinate the body type with 'Content-Type'
-        headers: new Headers({
-          'Content-Type': 'application/json',
-          'Authorization': tok
-        }),
-      })
-      .then(response => {
-        if(response.status === 200 || response.status===201 || response.status===202){
-        return response.json();
+        if (sending !== ''){
+            let tok = localStorage.getItem("token");
+            return fetch("https://project-ideas-v2-backend.herokuapp.com/admin_app/answer/", {
+            method: 'POST', // 'GET', 'PUT', 'DELETE', etc.
+            body: JSON.stringify(send), // Coordinate the body type with 'Content-Type'
+            headers: new Headers({
+              'Content-Type': 'application/json',
+              'Authorization': tok
+            }),
+          })
+          .then(response => {
+            if(response.status === 200 || response.status===201 || response.status===202){
+            return response.json();
+            }else{
+                switch(response.status){
+                    case 400: 
+                        this.props.alert.show("You have already answered once")
+                        break;
+                    case 401: 
+                      this.props.alert.show("something's wrong. Please try again later")
+                      break;
+                    case 403:
+                      this.props.alert.show("unauthorized")
+                      break;
+                    case 404:
+                      console.log("unauthorized")
+                      break;
+                    default:  
+                      this.props.alert.show("Seems like something's wrong on our end. Please contact the developers")
+                  }
+            }
+            })
+            .then(data => {
+                // console.log(data)
+               this.props.alert.show(data.message)
+            })
+            .catch(error => {
+                // console.log(error)
+            });
         }else{
-            switch(response.status){
-                case 400: 
-                    this.props.alert.show("You have already answered once")
-                    break;
-                case 401: 
-                  this.props.alert.show("something's wrong. Please try again later")
-                  break;
-                case 403:
-                  this.props.alert.show("unauthorized")
-                  break;
-                case 404:
-                  console.log("unauthorized")
-                  break;
-                default:  
-                  this.props.alert.show("Seems like something's wrong on our end. Please contact the developers")
-              }
+            this.props.alert.show("You cant submit an empty response!")
         }
-        })
-        .then(data => {
-            // console.log(data)
-           this.props.alert.show(data.message)
-        })
-        .catch(error => {
-            // console.log(error)
-        });
+        
       }
 
       showDate=(endtime)=>{
