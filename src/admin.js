@@ -146,6 +146,11 @@ class Admin extends React.Component{
               key: 'id',
             },
             {
+                title: 'username',
+                dataIndex: 'username',
+                key: 'username'
+            },
+            {
               title: 'type',
               dataIndex: 'answer_type',
               key: 'answer_type',
@@ -181,6 +186,11 @@ class Admin extends React.Component{
                     title: 'ans ID',
                     dataIndex: 'id',
                     key: 'id',
+                  },
+                  {
+                    title: 'username',
+                    dataIndex: 'username',
+                    key: 'username'
                   },
                   {
                     title: 'Answer',

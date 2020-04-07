@@ -77,7 +77,7 @@ class Weekly extends React.Component{
                       this.props.alert.show("something's wrong. Please try again later")
                       break;
                     case 403:
-                      this.props.alert.show("unauthorized")
+                      this.props.alert.show("Unauthorized. Please log in again and try")
                       break;
                     case 404:
                       console.log("unauthorized")
