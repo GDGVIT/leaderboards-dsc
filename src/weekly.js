@@ -21,14 +21,20 @@ class Weekly extends React.Component{
       }
     onFinish = values => {
         // console.log(values.answer_body)
-        if(values.answer_body && values.answer_body !== ""){
+        var expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+        var regex = new RegExp(expression);
+
+        if (values.answer_body.match(regex)) {
             links[n] = values.answer_body;
             n += 1;
             this.setState({
                 thelinks: links
             });
+        } else {
+        this.props.alert.show("Not a valid link");
         }
-        // console.log(this.state)
+  
+        // console.log(this.state.thelinks)
     }
     addTag=()=>{
         this.state.thelinks.forEach((e, i) => {
