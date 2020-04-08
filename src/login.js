@@ -169,7 +169,7 @@ const giauth=(e)=>{
                 if(response.code===406){
                     alert.show("Recaptcha not verified. Try again later")
                 }
-                alert.show(response.statusText);
+                // alert.show(response.statusText);
             }
             })
             .then(data => {
