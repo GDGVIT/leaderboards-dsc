@@ -30,7 +30,7 @@ class Faq extends React.Component{
                 3)You will have a lot of mini-projects by the end of the vacation to show off! 
                 <br/>
             </p>
-            <p>If you have any queries, contact us on <a href="https://www.instagram.com/dscvitvellore/" rel="noopener noreferrer" target="_blank">Instagram</a> or <a href="https://twitter.com/dscvit" rel="noopener noreferrer" target="_blank">Twitter</a> and we would be glad to help you!</p>
+            <p>If you have any queries, contact us on <a href="https://www.instagram.com/dscvitvellore/" rel="noopener noreferrer" target="_blank">Instagram</a>, <a href="https://twitter.com/dscvit" rel="noopener noreferrer" target="_blank">Twitter</a>, <a href="https://www.facebook.com/dscvitvellore" rel="noopener noreferrer" target="_blank">Facebook</a> or <a href="https://www.linkedin.com/company/dscvit" rel="noopener noreferrer" target="_blank">LinkedIn</a> and we would be glad to help you!</p>
             </div>
             </div>
           </div>
