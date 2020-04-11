@@ -53,7 +53,7 @@ class Weekly extends React.Component{
         let send = {
             'answer_body': sending,
             'answer_type': 1,
-            'weekly_challenge': 1
+            'weekly_challenge': 2
         }
         if (sending !== ''){
             let tok = localStorage.getItem("token");
@@ -121,7 +121,7 @@ class Weekly extends React.Component{
             this.props.history.push("/");
         }
         setInterval(() => {
-            this.showDate("April 11 2020 11:00:00 GMT+0530");
+            this.showDate("April 18 2020 11:00:00 GMT+0530");
         }, 1000);
     }
 
@@ -144,7 +144,7 @@ class Weekly extends React.Component{
             <div className="formparent ques">   
             <div> 
             <h3>Task</h3>
-            <p>In normal calculators, we have a limitation on the size of numbers we can use for calculations. Develop a calculator that can be used for numbers of any size.</p>
+            <p>As we know it's very tough to spend time away from your hostel friends, So to have fun with them, create some unique simple mini games which can be played with friends in real time.</p>
             <Form name="Daily-form" onFinish={this.onFinish}>
             <h3>Your answer</h3>
                 <Form.Item name='answer_body' className="sikebich" rules={[{required:true, message:"You can't leave this empty"}]}>
