@@ -96,7 +96,7 @@ class Daily extends React.Component{
             .catch(error => console.error(error))
 // console.log(new Date())
             setInterval(() => {
-                this.showDate("April 13 2020 11:00:00 GMT+0530");
+                this.showDate("April 14 2020 11:00:00 GMT+0530");
             }, 1000);
         }
 

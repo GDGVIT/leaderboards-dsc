@@ -42,7 +42,7 @@ class App extends React.Component {
     }
   }
   page404 = () =>{
-    return(<div>This match found for {this.props.location.pathname}</div>)
+    return(<div>no match found for {this.props.location.pathname}</div>)
   }
   componentDidMount(){
     loadReCaptcha("6Lcwf-UUAAAAAOQBtsfwGEjG4Y6iEkmQqbDy1uAz");
