@@ -75,6 +75,17 @@ class Daily extends React.Component{
       } 
 
 
+    //   rep() {
+    //     var str = 'Hello World';
+    //     str = setCharAt(str,4,'a');
+    //     alert(str);
+    // }
+    
+    setCharAt=(str,index,chr)=>{
+        if(index > str.length-1) return str;
+        return str.substr(0,index) + chr + str.substr(index+1);
+    }
+
       componentDidMount(){
         if(localStorage.getItem("token")){
             // console.log('.')
@@ -96,9 +107,15 @@ class Daily extends React.Component{
             .catch(error => console.error(error))
 // console.log(new Date())
             setInterval(() => {
-                this.showDate("April 16 2020 11:00:00 GMT+0530");
+                let d = new Date()
+                let t = d.toString()
+                let n;
+                d.getHours()<11?(n = parseInt(t[8]+t[9])):(n = parseInt(t[8]+t[9])+1)
+                t = "April "+ n.toString() +" 2020 11:00:00 GMT+0530" 
+                this.showDate(t);
             }, 1000);
         }
+
 
 
     render(){
