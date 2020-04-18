@@ -122,13 +122,13 @@ class Daily extends React.Component{
         return(
             <div className="form-holder">  
         <Nav active="daily"/>
-        <div className="timer">
+        {/* <div className="timer">
             <h3>Time left: </h3>
                 <p>Days: {this.state.days}</p>
                 <p>, Hours: {this.state.hours}</p>
                 <p>, Minutes: {this.state.minutes}</p>
                 <p>, Seconds: {this.state.seconds}</p>
-            </div>
+            </div> */}
             <div className="formparent ques">   
             <div> 
             <h3>Question</h3>
@@ -137,7 +137,7 @@ class Daily extends React.Component{
             <Form name="Daily-form" onFinish={this.onFinish}>
             <h3>Your answer</h3>
                 <Form.Item name="answer_body">
-                    <Input.TextArea placeholder="Give a short answer. Write about what you want to implement"/>
+                    <Input.TextArea disabled placeholder="Give a short answer. Write about what you want to implement"/>
                 </Form.Item>
 
             <Form.Item className="textbtn">
