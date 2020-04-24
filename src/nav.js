@@ -28,7 +28,7 @@ class Nav extends React.Component{
         }
       };
       logout=()=>{
-        fetch('https://project-ideas-v2-backend.herokuapp.com/app/logout/', {
+        fetch('https://project-ideas-v2.herokuapp.com/app/logout/', {
             headers: new Headers({
                 'Authorization': localStorage.getItem("token")
                 }),

@@ -57,7 +57,7 @@ class Weekly extends React.Component{
         }
         if (sending !== ''){
             let tok = localStorage.getItem("token");
-            return fetch("https://project-ideas-v2-backend.herokuapp.com/admin_app/answer/", {
+            return fetch("https://project-ideas-v2.herokuapp.com/admin_app/answer/", {
             method: 'POST', // 'GET', 'PUT', 'DELETE', etc.
             body: JSON.stringify(send), // Coordinate the body type with 'Content-Type'
             headers: new Headers({
