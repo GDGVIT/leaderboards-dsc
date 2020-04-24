@@ -155,7 +155,7 @@ const giauth=(e)=>{
             "social_user_id":user.uid,
             "g-recaptcha-response": recaptok
         }
-        fetch("https://project-ideas-v2-backend.herokuapp.com/app/login_signup/", {
+        fetch("https://project-ideas-v2.herokuapp.com/app/login_signup/", {
             method: 'POST', // 'GET', 'PUT', 'DELETE', etc.
             body: JSON.stringify(values), // Coordinate the body type with 'Content-Type'
             headers: new Headers({
