@@ -4,7 +4,7 @@ import {withAlert} from 'react-alert';
 import { Upload, message } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 
-const url = "https://project-ideas-v2-backend.herokuapp.com/";
+const url = "https://project-ideas-v2.herokuapp.com/";
 const { Dragger } = Upload;
 
 class Admin extends React.Component{
@@ -67,7 +67,7 @@ class Admin extends React.Component{
                 })
                 .catch(error => console.error(error))
 
-             fetch('https://project-ideas-v2-backend.herokuapp.com/admin_app/latest_question/', {
+             fetch('https://project-ideas-v2.herokuapp.com/admin_app/latest_question/', {
                 })
                 .then(response => response.json())
                 .then(data => {
