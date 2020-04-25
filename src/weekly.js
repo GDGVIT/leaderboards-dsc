@@ -53,7 +53,7 @@ class Weekly extends React.Component{
         let send = {
             'answer_body': sending,
             'answer_type': 1,
-            'weekly_challenge': 3
+            'weekly_challenge': 4
         }
         if (sending !== ''){
             let tok = localStorage.getItem("token");
@@ -121,7 +121,7 @@ class Weekly extends React.Component{
             this.props.history.push("/");
         }
         setInterval(() => {
-            this.showDate("April 25 2020 11:00:00 GMT+0530");
+            this.showDate("May 02 2020 11:00:00 GMT+0530");
         }, 1000);
     }
 
@@ -144,7 +144,7 @@ class Weekly extends React.Component{
             <div className="formparent ques">   
             <div> 
             <h3>Task</h3>
-            <p>Mathematics has haunted people since ages, all the numbers acting as most daunting elements in one’s life. Develop a system to tell interesting facts about random or numbers given by the user.</p>
+            <p>Task: At the end of every project, may, a web developer, has to go through the painstaking process of adding all the icons used on the website to the manifest.json file. Create an automation script for this process to help her.</p>
             <Form name="Daily-form" onFinish={this.onFinish}>
             <h3>Your answer</h3>
                 <Form.Item name='answer_body' className="sikebich" rules={[{required:true, message:"You can't leave this empty"}]}>
