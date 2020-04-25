@@ -21,7 +21,7 @@ class Daily extends React.Component{
         }
         let tok = localStorage.getItem("token");
         // console.log(tok  );
-        return fetch("https://project-ideas-v2-backend.herokuapp.com/admin_app/answer/", {
+        return fetch("https://project-ideas-v2.herokuapp.com/admin_app/answer/", {
         method: 'POST', // 'GET', 'PUT', 'DELETE', etc.
         body: JSON.stringify(send), // Coordinate the body type with 'Content-Type'
         headers: new Headers({
@@ -93,7 +93,7 @@ class Daily extends React.Component{
             this.props.history.push("/");
         }
 
-        fetch('https://project-ideas-v2-backend.herokuapp.com/admin_app/latest_question/', {
+        fetch('https://project-ideas-v2.herokuapp.com/admin_app/latest_question/', {
             })
             .then(response => response.json())
             .then(data => {

@@ -18,7 +18,7 @@ class Leader extends React.Component{
     }
   }
   componentDidMount(){
-    fetch('https://project-ideas-v2-backend.herokuapp.com/admin_app/leaderboard_view/', {
+    fetch('https://project-ideas-v2.herokuapp.com/admin_app/leaderboard_view/', {
       })
       .then(response => response.json())
       .then(data2 => {

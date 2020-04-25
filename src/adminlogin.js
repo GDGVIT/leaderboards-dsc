@@ -4,7 +4,7 @@ import { useAlert } from 'react-alert';
 
 
 const Adminlogin = (props) =>{
-    const url = "https://project-ideas-v2-backend.herokuapp.com";
+    const url = "https://project-ideas-v2.herokuapp.com";
     const alert = useAlert();
 
     const tailLayout = {
