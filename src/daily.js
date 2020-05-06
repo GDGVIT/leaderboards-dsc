@@ -111,7 +111,7 @@ class Daily extends React.Component{
                 let t = d.toString()
                 let n;
                 d.getHours()<11?(n = parseInt(t[8]+t[9])):(n = parseInt(t[8]+t[9])+1)
-                t = "April "+ n.toString() +" 2020 11:00:00 GMT+0530" 
+                t = "May "+ n.toString() +" 2020 11:00:00 GMT+0530" 
                 this.showDate(t);
             }, 1000);
         }
