@@ -53,7 +53,7 @@ class Weekly extends React.Component{
         let send = {
             'answer_body': sending,
             'answer_type': 1,
-            'weekly_challenge': 6
+            'weekly_challenge': 7
         }
         if (sending !== ''){
             let tok = localStorage.getItem("token");
@@ -121,7 +121,7 @@ class Weekly extends React.Component{
             this.props.history.push("/");
         }
         setInterval(() => {
-            this.showDate("May 16 2020 11:00:00 GMT+0530");
+            this.showDate("May 23 2020 11:00:00 GMT+0530");
         }, 1000);
     }
 
@@ -144,15 +144,8 @@ class Weekly extends React.Component{
             <div className="formparent ques">   
             <div> 
             <h3>Task</h3>
-            <p>Imagine a scenario where a user logs in on their laptop: <br/>
-                1) They open a web browser, <br/>
-                2) Visit Spotify, <br/>
-                3) Login,<br/>
-                4) Then select their favourite playlist. <br/>
-                <br/>
-                Automate this task.<br/>
-                <br/>
-                (Hint: Try using selenium!)
+            <p>
+            Rahul and his girlfriend have not met each other because of the quarantine, they wish there was an application which would allow them to stream YouTube videos together (i.e if one of them pauses video the video should get paused for the other too). <br/> Design an application to help them out
             </p>
             <Form name="Daily-form" onFinish={this.onFinish}>
             <h3>Your answer</h3>
