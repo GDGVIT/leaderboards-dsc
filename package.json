@@ -12,7 +12,7 @@
     "react-alert": "^7.0.0",
     "react-alert-template-basic": "^1.0.0",
     "react-dom": "^16.13.1",
-    "react-recaptcha-v3": "^1.1.0",
+    "react-recaptcha-v3": "^1.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "recompose": "^0.30.0"
